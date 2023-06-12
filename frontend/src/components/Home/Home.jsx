@@ -3,6 +3,12 @@ import { GetApi } from "../../Utils/Api";
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  //   const [rating, setRating] = useState(0);
+
+  //   const handleRatingClick = (value) => {
+  //     setRating(value);
+  //   };
+
   console.log("all-m", movies);
   const getMovie = async () => {
     await GetApi("movies/allmovies")
@@ -40,27 +46,30 @@ const Home = () => {
                   <div className="bg-slate-200">
                     <h5 className="pt-2 text-lg text-center ">
                       {" "}
-                       <b className="text-green-600">Name: </b><b>{i.name}</b>
+                      <b className="text-green-600">Name: </b>
+                      <b>{i.name}</b>
                     </h5>
                     <h3 className="pt-2 text-lg text-center ">
                       {" "}
-                      <b className="text-green-600">Release Date:</b> <b> {i.releaseDate}</b>
+                      <b className="text-green-600">Release Date:</b>{" "}
+                      <b> {i.releaseDate}</b>
                     </h3>
-                    {/* <h3 className="pt-2 text-lg text-center "> <b>{i.rating}</b></h3> */}
-                  {/* </div> */}
-                  <div className="flex justify-center">
-                    {[...Array(5)].map((star) => {
-                      return (
-                        <span
-                          className={
-                            2 <= 5 ? "text-yellow-400" : "text-gray-300"
-                          }
-                        >
-                          &#9733;
-                        </span>
-                      );
-                    })}
-                  </div>
+
+                    <div className="flex justify-center">
+                      {/* <h2>Star Rating: `${i.rating}`</h2> */}
+                      <div>
+                        {[1, 2, 3, 4, 5].map((value) => (
+                          <span
+                            key={value}
+                            style={{
+                              color: value <= `${i.rating}` ? "gold" : "gray",
+                            }}
+                          >
+                            ★
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </a>
               ))}

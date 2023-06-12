@@ -34,6 +34,7 @@ const getAllMovies = async (req, res) => {
         res.status(200).send({status:200,success:true,message:"All movie List", list });
       }
     } catch (error) {
+      console.log(error);
       res.status(500).send({status:500,success:false, message:"Something went wrong!" });
     }
   };
